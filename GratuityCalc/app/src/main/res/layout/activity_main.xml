@@ -80,7 +80,7 @@
         android:text="Payment Per Person"
         android:id="@+id/textView4"
         android:textSize="20dp"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/Calculate"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -162,8 +162,27 @@
         android:text="Calculate"
         android:id="@+id/Calculate"
         android:layout_below="@+id/numPpl"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3"
-        android:layout_marginTop="29dp" />
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Round Tip Value"
+        android:id="@+id/roundTip"
+        android:layout_below="@+id/pTotal"
+        android:layout_toRightOf="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5"
+        android:layout_marginTop="25dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Round Total"
+        android:id="@+id/roundTotal"
+        android:layout_below="@+id/roundTip"
+        android:layout_toRightOf="@+id/textView5"
+        android:layout_marginTop="29dp"
+        android:layout_alignRight="@+id/roundTip"
+        android:layout_alignEnd="@+id/roundTip" />
 
 </RelativeLayout>

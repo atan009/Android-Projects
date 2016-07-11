@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button Calculate = (Button) findViewById(R.id.Calculate);
+        final Button RoundTip = (Button)findViewById(R.id.roundTip);
+        Button RoundTotal = (Button)findViewById(R.id.roundTotal);
+
+        final int[] canRound = {0};
 
         setTitle("Gratuity Calculator");
 
@@ -60,13 +64,83 @@ public class MainActivity extends AppCompatActivity {
                     TextView sTip = (TextView)findViewById(R.id.sTip);
                     TextView pTip = (TextView)findViewById(R.id.pTotal);
 
-                    sTot.setText(String.format("$ %.2f", Subtotal));
-                    sTip.setText(String.format("$ %.2f", singleTip));
-                    pTip.setText(String.format("$ %.2f", singleTotal));
+                    sTot.setText(String.format("$%.2f", Subtotal));
+                    sTip.setText(String.format("$%.2f", singleTip));
+                    pTip.setText(String.format("$%.2f", singleTotal));
 
+
+                    canRound[0] = 1;
                     //Toast.makeText(getApplicationContext(), Double.toString(GroupTotal), Toast.LENGTH_LONG).show();
                 }
 
+            }
+        });
+
+
+        RoundTip.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if (canRound[0] == 1)
+                {
+                    TextView rTip = (TextView)findViewById(R.id.sTip);
+                    TextView rTotal = (TextView)findViewById(R.id.pTotal);
+                    TextView rsTotal = (TextView)findViewById(R.id.sTotal);
+
+
+                    String nTip = rTip.getText().toString();
+                    nTip = nTip.substring(1,nTip.length());
+                    double newTip = Double.valueOf(nTip);
+
+
+                    int roundTip = (int)Math.round(newTip);
+                    rTip.setText("$" + Integer.toString(roundTip));
+
+                    String RSTot = rsTotal.getText().toString();
+                    RSTot = RSTot.substring(1,RSTot.length());
+                    double RSTotal = Double.valueOf(RSTot);
+
+                    String STot = rTotal.getText().toString();
+                    STot = STot.substring(1,STot.length());
+                    double STotal = Double.valueOf(STot);
+
+                    double value = RSTotal + roundTip;
+                    rTotal.setText("$" + Double.toString(value));
+
+                }
+            }
+        });
+
+
+        RoundTotal.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if (canRound[0] == 1)
+                {
+                    TextView rTip = (TextView)findViewById(R.id.sTip);
+                    TextView rTotal = (TextView)findViewById(R.id.pTotal);
+                    TextView rsTotal = (TextView)findViewById(R.id.sTotal);
+
+
+                    String nTip = rTip.getText().toString();
+                    nTip = nTip.substring(1,nTip.length());
+                    double newTip = Double.valueOf(nTip);
+
+
+                    String RSTot = rsTotal.getText().toString();
+                    RSTot = RSTot.substring(1,RSTot.length());
+                    double RSTotal = Double.valueOf(RSTot);
+
+                    String STot = rTotal.getText().toString();
+                    STot = STot.substring(1,STot.length());
+                    double STotal = Double.valueOf(STot);
+
+                    int roundTot = (int)Math.round(STotal);
+                    rTotal.setText("$" + Integer.toString(roundTot));
+
+                    double value = roundTot - RSTotal;
+                    rTip.setText(String.format("$%.2f",value));
+
+                }
             }
         });
 
