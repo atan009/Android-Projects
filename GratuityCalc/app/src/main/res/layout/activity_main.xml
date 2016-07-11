@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/Total"
+        android:id="@+id/TotalGroup"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -26,7 +26,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Total:"
         android:id="@+id/textView"
-        android:layout_alignBottom="@+id/Total"
+        android:layout_alignBottom="@+id/TotalGroup"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textSize="26dp" />
@@ -36,10 +36,10 @@
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:id="@+id/pTip"
-        android:layout_below="@+id/Total"
-        android:layout_alignLeft="@+id/Total"
-        android:layout_alignStart="@+id/Total" />
+        android:id="@+id/TipGroup"
+        android:layout_below="@+id/TotalGroup"
+        android:layout_alignLeft="@+id/TotalGroup"
+        android:layout_alignStart="@+id/TotalGroup" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="% Tip:"
         android:id="@+id/textView2"
-        android:layout_alignBottom="@+id/pTip"
+        android:layout_alignBottom="@+id/TipGroup"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textSize="26dp" />
@@ -58,9 +58,9 @@
         android:inputType="numberSigned"
         android:ems="10"
         android:id="@+id/numPpl"
-        android:layout_below="@+id/pTip"
-        android:layout_alignLeft="@+id/pTip"
-        android:layout_alignStart="@+id/pTip" />
+        android:layout_below="@+id/TipGroup"
+        android:layout_alignLeft="@+id/TipGroup"
+        android:layout_alignStart="@+id/TipGroup" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -135,7 +135,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="$0"
-        android:id="@+id/dTip"
+        android:id="@+id/sTip"
         android:layout_alignBottom="@+id/textView7"
         android:layout_alignLeft="@+id/sTotal"
         android:layout_alignStart="@+id/sTotal"
@@ -150,11 +150,11 @@
         android:text="$0"
         android:id="@+id/pTotal"
         android:layout_alignBottom="@+id/textView8"
-        android:layout_alignLeft="@+id/dTip"
-        android:layout_alignStart="@+id/dTip"
+        android:layout_alignLeft="@+id/sTip"
+        android:layout_alignStart="@+id/sTip"
         android:textSize="26dp"
-        android:layout_alignRight="@+id/dTip"
-        android:layout_alignEnd="@+id/dTip" />
+        android:layout_alignRight="@+id/sTip"
+        android:layout_alignEnd="@+id/sTip" />
 
     <Button
         android:layout_width="wrap_content"

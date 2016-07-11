@@ -19,22 +19,30 @@ public class MainActivity extends AppCompatActivity {
 
         Button Calculate = (Button) findViewById(R.id.Calculate);
 
-        EditText total = (EditText)findViewById(R.id.Total);
-        EditText PercentageTip = (EditText)findViewById(R.id.pTip);
-        EditText NumberOfPeople = (EditText)findViewById(R.id.numPpl);
+        final EditText total = (EditText)findViewById(R.id.TotalGroup);
+        final EditText PercentageTip = (EditText)findViewById(R.id.TipGroup);
+        final EditText NumberOfPeople = (EditText)findViewById(R.id.numPpl);
 
         total.setKeyListener(DigitsKeyListener.getInstance(true,true));
         PercentageTip.setKeyListener(DigitsKeyListener.getInstance(true,true));
 
+        assert Calculate != null;
         Calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String t = total.getText().toString();
+                String PTip = PercentageTip.getText().toString();
+                String Ppl = NumberOfPeople.getText().toString();
 
-//                int Total = Integer.parseInt(total.getText().toString());
-//                int PercentTip = Integer.parseInt(PercentageTip.getText().toString());
-//                int numPeople = Integer.parseInt(NumberOfPeople.getText().toString());
+                if (t.length() > 0 && PTip.length() > 0 && Ppl.length() > 0) {
+                    int Total = Integer.parseInt(t);
+                    int PercentTip = Integer.parseInt(PTip);
+                    int numPeople = Integer.parseInt(Ppl);
 
-                Toast.makeText(getApplicationContext(),"Successfully sent!", Toast.LENGTH_LONG).show();
+                    int GroupTotal = Total * PercentTip / 100 + Total;
+
+                    Toast.makeText(getApplicationContext(), Integer.toString(GroupTotal), Toast.LENGTH_LONG).show();
+                }
 
             }
         });
