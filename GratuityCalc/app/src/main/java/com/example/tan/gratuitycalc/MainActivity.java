@@ -6,7 +6,10 @@ import android.text.method.DigitsKeyListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button Calculate = (Button) findViewById(R.id.Calculate);
+
+        setTitle("Gratuity Calculator");
 
         final EditText total = (EditText)findViewById(R.id.TotalGroup);
         final EditText PercentageTip = (EditText)findViewById(R.id.TipGroup);
@@ -35,13 +40,31 @@ public class MainActivity extends AppCompatActivity {
                 String Ppl = NumberOfPeople.getText().toString();
 
                 if (t.length() > 0 && PTip.length() > 0 && Ppl.length() > 0) {
-                    int Total = Integer.parseInt(t);
-                    int PercentTip = Integer.parseInt(PTip);
+                    double Total = Double.parseDouble(t);
+                    double PercentTip = Double.parseDouble(PTip);
                     int numPeople = Integer.parseInt(Ppl);
 
-                    int GroupTotal = Total * PercentTip / 100 + Total;
 
-                    Toast.makeText(getApplicationContext(), Integer.toString(GroupTotal), Toast.LENGTH_LONG).show();
+
+
+                    double Subtotal = Total / numPeople;
+
+                    double tip = Total * PercentTip / 100;
+                    double singleTip = tip / numPeople;
+
+                    double singleTotal = Subtotal + singleTip;
+
+
+
+                    TextView sTot = (TextView)findViewById(R.id.sTotal);
+                    TextView sTip = (TextView)findViewById(R.id.sTip);
+                    TextView pTip = (TextView)findViewById(R.id.pTotal);
+
+                    sTot.setText(String.format("$ %.2f", Subtotal));
+                    sTip.setText(String.format("$ %.2f", singleTip));
+                    pTip.setText(String.format("$ %.2f", singleTotal));
+
+                    //Toast.makeText(getApplicationContext(), Double.toString(GroupTotal), Toast.LENGTH_LONG).show();
                 }
 
             }
