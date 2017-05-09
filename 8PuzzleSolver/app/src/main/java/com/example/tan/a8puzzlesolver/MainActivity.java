@@ -24,8 +24,6 @@ class MyInteger
 
 
 
-
-
 public class MainActivity extends AppCompatActivity {
 
     //detects where 0 is located
@@ -41,6 +39,46 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+
+
+    public ArrayList<ArrayList<Integer>>mv_up(MyInteger verPos, MyInteger horPos, ArrayList<ArrayList<Integer>> cur)
+    {
+        ArrayList<ArrayList<Integer>> up = cur;
+        up.get(verPos.value).set(horPos.value, up.get(verPos.value-1).get(horPos.value));
+        up.get(verPos.value-1).set(horPos.value,0);
+        return up;
+    }
+
+
+
+    public ArrayList<ArrayList<Integer>>mv_down(MyInteger verPos, MyInteger horPos, ArrayList<ArrayList<Integer>> cur)
+    {
+        ArrayList<ArrayList<Integer>> down = cur;
+        down.get(verPos.value).set(horPos.value, down.get(verPos.value+1).get(horPos.value));
+        down.get(verPos.value+1).set(horPos.value,0);
+        return down;
+    }
+
+
+
+    public ArrayList<ArrayList<Integer>>mv_left(MyInteger verPos, MyInteger horPos, ArrayList<ArrayList<Integer>> cur)
+    {
+        ArrayList<ArrayList<Integer>> left = cur;
+        left.get(verPos.value).set(horPos.value, left.get(verPos.value).get(horPos.value-1));
+        left.get(verPos.value).set(horPos.value-1,0);
+        return left;
+    }
+
+
+
+    public ArrayList<ArrayList<Integer>>mv_right(MyInteger verPos, MyInteger horPos, ArrayList<ArrayList<Integer>> cur)
+    {
+        ArrayList<ArrayList<Integer>> right = cur;
+        right.get(verPos.value).set(horPos.value, right.get(verPos.value).get(horPos.value+1));
+        right.get(verPos.value).set(horPos.value+1,0);
+        return right;
     }
 
     @Override
@@ -93,7 +131,9 @@ public class MainActivity extends AppCompatActivity {
 
 
                 Z_pos(verPos, horPos, eight_puzzle);
-                Toast.makeText(getApplicationContext(), Integer.toString(verPos.value), Toast.LENGTH_LONG).show();
+                eight_puzzle = mv_right(verPos,horPos,eight_puzzle);
+                Z_pos(verPos, horPos, eight_puzzle);
+                Toast.makeText(getApplicationContext(), Integer.toString(horPos.value), Toast.LENGTH_LONG).show();
             }
         });
     }
