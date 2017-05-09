@@ -6,4 +6,142 @@
     android:layout_height="match_parent"
     tools:context="com.example.tan.a8puzzlesolver.MainActivity">
 
+    <EditText
+        android:id="@+id/box1"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="350dp"
+        android:layout_marginRight="0dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/box2"
+        android:maxLength="1"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/box2"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="350dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:maxLength="1"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/box3"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="350dp"
+        android:layout_marginLeft="-17dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/box2"
+        android:maxLength="1"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/box4"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="275dp"
+        android:layout_marginRight="0dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/box5"
+        android:maxLength="1"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/box5"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="275dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:maxLength="1"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/box6"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="275dp"
+        android:layout_marginLeft="0dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/box5"
+        android:maxLength="1"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/box7"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="200dp"
+        android:layout_marginRight="0dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/box8"
+        android:maxLength="1"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/box8"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="200dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:maxLength="1"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/box9"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginBottom="200dp"
+        android:layout_marginLeft="0dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/box8"
+        android:maxLength="1"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/solve_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Solve"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
