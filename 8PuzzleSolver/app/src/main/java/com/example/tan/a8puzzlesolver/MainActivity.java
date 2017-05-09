@@ -10,7 +10,38 @@ package com.example.tan.a8puzzlesolver;
         import java.util.ArrayList;
         import java.util.Arrays;
 
+
+//Integer by reference
+class MyInteger
+{
+    int value;
+
+    public MyInteger(int newValue)
+    {
+        value = newValue;
+    }
+}
+
+
+
+
+
 public class MainActivity extends AppCompatActivity {
+
+    //detects where 0 is located
+    public void Z_pos(MyInteger verPos, MyInteger horPos, ArrayList<ArrayList<Integer>> cur)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            for (int k = 0; k < 3; k++)
+            {
+                if (cur.get(i).get(k) == 0) {
+                    verPos.value = i;
+                    horPos.value = k;
+                }
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ArrayList<ArrayList<Integer>> eight_puzzle = new ArrayList<ArrayList<Integer>>();
+                MyInteger verPos = new MyInteger(0);
+                MyInteger horPos = new MyInteger(0);
+
 
                 EditText box1 = (EditText) findViewById(R.id.box1);
                 EditText box2 = (EditText) findViewById(R.id.box2);
@@ -57,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
                 eight_puzzle.add(row2);
                 eight_puzzle.add(row3);
 
-                Toast.makeText(getApplicationContext(), Integer.toString(eight_puzzle.get(0).get(0)), Toast.LENGTH_LONG).show();
+
+                Z_pos(verPos, horPos, eight_puzzle);
+                Toast.makeText(getApplicationContext(), Integer.toString(verPos.value), Toast.LENGTH_LONG).show();
             }
         });
     }
