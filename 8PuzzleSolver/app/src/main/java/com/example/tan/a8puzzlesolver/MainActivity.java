@@ -28,7 +28,7 @@ class node
 {
     int g = 0;
     int h = 0;
-    node next = null;
+    node prev = null;
     ArrayList<ArrayList<Integer>> cur = new ArrayList<ArrayList<Integer>>();
 
     public node(ArrayList<ArrayList<Integer>> copy)
@@ -37,6 +37,16 @@ class node
         {
             cur.add((ArrayList<Integer>) item.clone());
         }
+    }
+
+    public node(node copy)
+    {
+        for (ArrayList<Integer> item : copy.cur)
+        {
+            cur.add((ArrayList<Integer>) item.clone());
+        }
+        g = copy.g;
+        h = copy.h;
     }
 }
 
@@ -505,16 +515,11 @@ public class MainActivity extends AppCompatActivity {
                 {
                     node given = new node(eight_puzzle);
 
+                    //Toast.makeText(getApplicationContext(), Integer.toString(given.g), Toast.LENGTH_LONG).show();
 
-                    Z_pos(verPos,horPos,eight_puzzle);
-                    given.cur = mv_down(verPos, horPos, given.cur);
-                    Toast.makeText(getApplicationContext(), Integer.toString(eight_puzzle.get(1).get(1)), Toast.LENGTH_LONG).show();
-                    /*
-                    node init = new node();
-                    init.cur = eight_puzzle;
+                    node init = new node(eight_puzzle);
 
-                    node current = new node();
-                    current = init;
+                    node current = new node(eight_puzzle);
 
                     ArrayList<ArrayList<ArrayList<Integer>>> traversed = new ArrayList<ArrayList<ArrayList<Integer>>>();
                     traversed.add(current.cur);
@@ -529,10 +534,54 @@ public class MainActivity extends AppCompatActivity {
                             if (!a_misplaced.get(i).isEmpty())
                             {
                                 current = a_misplaced.get(i).poll();
+                                break;
                             }
                         }
+
+
+                        Z_pos(verPos, horPos, current.cur);
+
+
+                        if (verPos.value == 0 && horPos.value == 0)
+                        {
+                            node right_filler = new node(current);
+                            node right = new node(current);
+                            right.prev = right_filler;
+                            right.cur = mv_right(verPos, horPos, right.cur);
+                            if (!traversed.contains(right.cur))
+                            {
+                                right.g = current.g + 1;
+                                right.h = Manhattan(right.cur);
+                                if (right.g + right.h < 67)
+                                {
+                                    a_misplaced.get(right.g + right.h).add(right);
+                                    traversed.add(right.cur);
+                                }
+                            }
+
+
+                            node down_filler = new node(current);
+                            node down = new node(current);
+                            down.prev = down_filler;
+                            down.cur = mv_down(verPos, horPos, down.cur);
+                            if (!traversed.contains(down.cur))
+                            {
+                                down.g = current.g + 1;
+                                down.h = Manhattan(down.cur);
+                                if (down.g + down.h < 67)
+                                {
+                                    a_misplaced.get(down.g + down.h).add(down);
+                                    traversed.add(down.cur);
+                                }
+                            }
+                        }
+
+                        else if (verPos.value == 0 && horPos.value == 1)
+                        {
+                            
+                        }
                     }
-                    */
+
                 }
             }
         });
