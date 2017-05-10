@@ -578,10 +578,404 @@ public class MainActivity extends AppCompatActivity {
 
                         else if (verPos.value == 0 && horPos.value == 1)
                         {
-                            
+                            node left_filler = new node(current);
+                            node left = new node(current);
+                            left.prev = left_filler;
+                            left.cur = mv_left(verPos, horPos, left.cur);
+                            if (!traversed.contains(left.cur))
+                            {
+                                left.g = current.g + 1;
+                                left.h = Manhattan(left.cur);
+                                if (left.g + left.h < 67)
+                                {
+                                    a_misplaced.get(left.g + left.h).add(left);
+                                    traversed.add(left.cur);
+                                }
+                            }
+
+
+
+                            node right_filler = new node(current);
+                            node right = new node(current);
+                            right.prev = right_filler;
+                            right.cur = mv_right(verPos, horPos, right.cur);
+                            if (!traversed.contains(right.cur))
+                            {
+                                right.g = current.g + 1;
+                                right.h = Manhattan(right.cur);
+                                if (right.g + right.h < 67)
+                                {
+                                    a_misplaced.get(right.g + right.h).add(right);
+                                    traversed.add(right.cur);
+                                }
+                            }
+
+
+
+                            node down_filler = new node(current);
+                            node down = new node(current);
+                            down.prev = down_filler;
+                            down.cur = mv_right(verPos, horPos, down.cur);
+                            if (!traversed.contains(down.cur))
+                            {
+                                down.g = current.g + 1;
+                                down.h = Manhattan(down.cur);
+                                if (down.g + down.h < 67)
+                                {
+                                    a_misplaced.get(down.g + down.h).add(down);
+                                    traversed.add(down.cur);
+                                }
+                            }
+                        }
+
+
+                        else if (verPos.value == 0 && horPos.value == 2)
+                        {
+                            node left_filler = new node(current);
+                            node left = new node(current);
+                            left.prev = left_filler;
+                            left.cur = mv_left(verPos, horPos, left.cur);
+                            if (!traversed.contains(left.cur))
+                            {
+                                left.g = current.g + 1;
+                                left.h = Manhattan(left.cur);
+                                if (left.g + left.h < 67)
+                                {
+                                    a_misplaced.get(left.g + left.h).add(left);
+                                    traversed.add(left.cur);
+                                }
+                            }
+
+
+
+                            node down_filler = new node(current);
+                            node down = new node(current);
+                            down.prev = down_filler;
+                            down.cur = mv_down(verPos, horPos, down.cur);
+                            if (!traversed.contains(down.cur))
+                            {
+                                down.g = current.g + 1;
+                                down.h = Manhattan(down.cur);
+                                if (down.g + down.h < 67)
+                                {
+                                    a_misplaced.get(down.g + down.h).add(down);
+                                    traversed.add(down.cur);
+                                }
+                            }
+                        }
+
+
+
+                        else if (verPos.value == 1 && horPos.value == 0)
+                        {
+                            node up_filler = new node(current);
+                            node up = new node(current);
+                            up.prev = up_filler;
+                            up.cur = mv_up(verPos, horPos, up.cur);
+                            if (!traversed.contains(up.cur))
+                            {
+                                up.g = current.g + 1;
+                                up.h = Manhattan(up.cur);
+                                if (up.g + up.h < 67)
+                                {
+                                    a_misplaced.get(up.g + up.h).add(up);
+                                    traversed.add(up.cur);
+                                }
+                            }
+
+
+
+                            node right_filler = new node(current);
+                            node right = new node(current);
+                            right.prev = right_filler;
+                            right.cur = mv_right(verPos, horPos, right.cur);
+                            if (!traversed.contains(right.cur))
+                            {
+                                right.g = current.g + 1;
+                                right.h = Manhattan(right.cur);
+                                if (right.g + right.h < 67)
+                                {
+                                    a_misplaced.get(right.g + right.h).add(right);
+                                    traversed.add(right.cur);
+                                }
+                            }
+
+
+
+                            node down_filler = new node(current);
+                            node down = new node(current);
+                            down.prev = down_filler;
+                            down.cur = mv_down(verPos, horPos, down.cur);
+                            if (!traversed.contains(down.cur))
+                            {
+                                down.g = current.g + 1;
+                                down.h = Manhattan(down.cur);
+                                if (down.g + down.h < 67)
+                                {
+                                    a_misplaced.get(down.g + down.h).add(down);
+                                    traversed.add(down.cur);
+                                }
+                            }
+                        }
+
+
+
+                        else if (verPos.value == 1 && horPos.value == 1)
+                        {
+                            node up_filler = new node(current);
+                            node up = new node(current);
+                            up.prev = up_filler;
+                            up.cur = mv_up(verPos, horPos, up.cur);
+                            if (!traversed.contains(up.cur))
+                            {
+                                up.g = current.g + 1;
+                                up.h = Manhattan(up.cur);
+                                if (up.g + up.h < 67)
+                                {
+                                    a_misplaced.get(up.g + up.h).add(up);
+                                    traversed.add(up.cur);
+                                }
+                            }
+
+
+
+                            node right_filler = new node(current);
+                            node right = new node(current);
+                            right.prev = right_filler;
+                            right.cur = mv_right(verPos, horPos, right.cur);
+                            if (!traversed.contains(right.cur))
+                            {
+                                right.g = current.g + 1;
+                                right.h = Manhattan(right.cur);
+                                if (right.g + right.h < 67)
+                                {
+                                    a_misplaced.get(right.g + right.h).add(right);
+                                    traversed.add(right.cur);
+                                }
+                            }
+
+
+
+                            node down_filler = new node(current);
+                            node down = new node(current);
+                            down.prev = down_filler;
+                            down.cur = mv_down(verPos, horPos, down.cur);
+                            if (!traversed.contains(down.cur))
+                            {
+                                down.g = current.g + 1;
+                                down.h = Manhattan(down.cur);
+                                if (down.g + down.h < 67)
+                                {
+                                    a_misplaced.get(down.g + down.h).add(down);
+                                    traversed.add(down.cur);
+                                }
+                            }
+
+
+
+                            node left_filler = new node(current);
+                            node left = new node(current);
+                            left.prev = left_filler;
+                            left.cur = mv_left(verPos, horPos, left.cur);
+                            if (!traversed.contains(left.cur))
+                            {
+                                left.g = current.g + 1;
+                                left.h = Manhattan(left.cur);
+                                if (left.g + left.h < 67)
+                                {
+                                    a_misplaced.get(left.g + left.h).add(left);
+                                    traversed.add(left.cur);
+                                }
+                            }
+                        }
+
+
+
+
+                        else if (verPos.value == 1 && horPos.value == 2)
+                        {
+                            node down_filler = new node(current);
+                            node down = new node(current);
+                            down.prev = down_filler;
+                            down.cur = mv_down(verPos, horPos, down.cur);
+                            if (!traversed.contains(down.cur))
+                            {
+                                down.g = current.g + 1;
+                                down.h = Manhattan(down.cur);
+                                if (down.g + down.h < 67)
+                                {
+                                    a_misplaced.get(down.g + down.h).add(down);
+                                    traversed.add(down.cur);
+                                }
+                            }
+
+
+
+                            node up_filler = new node(current);
+                            node up = new node(current);
+                            up.prev = up_filler;
+                            up.cur = mv_up(verPos, horPos, up.cur);
+                            if (!traversed.contains(up.cur))
+                            {
+                                up.g = current.g + 1;
+                                up.h = Manhattan(up.cur);
+                                if (up.g + up.h < 67)
+                                {
+                                    a_misplaced.get(up.g + up.h).add(up);
+                                    traversed.add(up.cur);
+                                }
+                            }
+
+
+
+                            node left_filler = new node(current);
+                            node left = new node(current);
+                            left.prev = left_filler;
+                            left.cur = mv_left(verPos, horPos, left.cur);
+                            if (!traversed.contains(left.cur))
+                            {
+                                left.g = current.g + 1;
+                                left.h = Manhattan(left.cur);
+                                if (left.g + left.h < 67)
+                                {
+                                    a_misplaced.get(left.g + left.h).add(left);
+                                    traversed.add(left.cur);
+                                }
+                            }
+                        }
+
+
+
+                        else if (verPos.value == 2 && horPos.value == 0)
+                        {
+                            node up_filler = new node(current);
+                            node up = new node(current);
+                            up.prev = up_filler;
+                            up.cur = mv_up(verPos, horPos, up.cur);
+                            if (!traversed.contains(up.cur))
+                            {
+                                up.g = current.g + 1;
+                                up.h = Manhattan(up.cur);
+                                if (up.g + up.h < 67)
+                                {
+                                    a_misplaced.get(up.g + up.h).add(up);
+                                    traversed.add(up.cur);
+                                }
+                            }
+
+
+
+                            node right_filler = new node(current);
+                            node right = new node(current);
+                            right.prev = right_filler;
+                            right.cur = mv_right(verPos, horPos, right.cur);
+                            if (!traversed.contains(right.cur))
+                            {
+                                right.g = current.g + 1;
+                                right.h = Manhattan(right.cur);
+                                if (right.g + right.h < 67)
+                                {
+                                    a_misplaced.get(right.g + right.h).add(right);
+                                    traversed.add(right.cur);
+                                }
+                            }
+                        }
+
+
+
+                        else if (verPos.value == 2 && horPos.value == 1)
+                        {
+                            node up_filler = new node(current);
+                            node up = new node(current);
+                            up.prev = up_filler;
+                            up.cur = mv_up(verPos, horPos, up.cur);
+                            if (!traversed.contains(up.cur))
+                            {
+                                up.g = current.g + 1;
+                                up.h = Manhattan(up.cur);
+                                if (up.g + up.h < 67)
+                                {
+                                    a_misplaced.get(up.g + up.h).add(up);
+                                    traversed.add(up.cur);
+                                }
+                            }
+
+
+
+                            node left_filler = new node(current);
+                            node left = new node(current);
+                            left.prev = left_filler;
+                            left.cur = mv_left(verPos, horPos, left.cur);
+                            if (!traversed.contains(left.cur))
+                            {
+                                left.g = current.g + 1;
+                                left.h = Manhattan(left.cur);
+                                if (left.g + left.h < 67)
+                                {
+                                    a_misplaced.get(left.g + left.h).add(left);
+                                    traversed.add(left.cur);
+                                }
+                            }
+
+
+
+                            node right_filler = new node(current);
+                            node right = new node(current);
+                            right.prev = right_filler;
+                            right.cur = mv_right(verPos, horPos, right.cur);
+                            if (!traversed.contains(right.cur))
+                            {
+                                right.g = current.g + 1;
+                                right.h = Manhattan(right.cur);
+                                if (right.g + right.h < 67)
+                                {
+                                    a_misplaced.get(right.g + right.h).add(right);
+                                    traversed.add(right.cur);
+                                }
+                            }
+                        }
+
+
+
+                        else if (verPos.value == 2 && horPos.value == 2)
+                        {
+                            node left_filler = new node(current);
+                            node left = new node(current);
+                            left.prev = left_filler;
+                            left.cur = mv_left(verPos, horPos, left.cur);
+                            if (!traversed.contains(left.cur))
+                            {
+                                left.g = current.g + 1;
+                                left.h = Manhattan(left.cur);
+                                if (left.g + left.h < 67)
+                                {
+                                    a_misplaced.get(left.g + left.h).add(left);
+                                    traversed.add(left.cur);
+                                }
+                            }
+
+
+
+                            node up_filler = new node(current);
+                            node up = new node(current);
+                            up.prev = up_filler;
+                            up.cur = mv_up(verPos, horPos, up.cur);
+                            if (!traversed.contains(up.cur))
+                            {
+                                up.g = current.g + 1;
+                                up.h = Manhattan(up.cur);
+                                if (up.g + up.h < 67)
+                                {
+                                    a_misplaced.get(up.g + up.h).add(up);
+                                    traversed.add(up.cur);
+                                }
+                            }
                         }
                     }
 
+
+
+                    //Where the next code goes
                 }
             }
         });
