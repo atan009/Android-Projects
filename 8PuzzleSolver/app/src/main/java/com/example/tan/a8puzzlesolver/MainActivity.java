@@ -10,6 +10,7 @@ package com.example.tan.a8puzzlesolver;
         import java.lang.reflect.Array;
         import java.util.ArrayList;
         import java.util.Arrays;
+        import java.util.Queue;
 
 
 //Integer by reference
@@ -23,6 +24,21 @@ class MyInteger
     }
 }
 
+class node
+{
+    int g = 0;
+    int h = 0;
+    node next = null;
+    ArrayList<ArrayList<Integer>> cur = new ArrayList<ArrayList<Integer>>();
+
+    public node(ArrayList<ArrayList<Integer>> copy)
+    {
+        for (ArrayList<Integer> item : copy)
+        {
+            cur.add((ArrayList<Integer>) item.clone());
+        }
+    }
+}
 
 
 public class MainActivity extends AppCompatActivity {
@@ -435,7 +451,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<ArrayList<Integer>> goal = new ArrayList<ArrayList<Integer>>();
+        final ArrayList<ArrayList<Integer>> goal = new ArrayList<ArrayList<Integer>>();
         goal.add(new ArrayList<Integer>(Arrays.asList(1,2,3)));
         goal.add(new ArrayList<Integer>(Arrays.asList(4,5,6)));
         goal.add(new ArrayList<Integer>(Arrays.asList(7,8,0)));
@@ -478,15 +494,45 @@ public class MainActivity extends AppCompatActivity {
                 eight_puzzle.add(row2);
                 eight_puzzle.add(row3);
 
-                /*
-                Z_pos(verPos, horPos, eight_puzzle);
-                eight_puzzle = mv_right(verPos,horPos,eight_puzzle);
-                Z_pos(verPos, horPos, eight_puzzle);
-                int mDistance = Manhattan(eight_puzzle);
-                */
+
                 boolean solve = solvable(eight_puzzle);
-                if (solve == true) {
-                    Toast.makeText(getApplicationContext(), "solvable", Toast.LENGTH_LONG).show();
+                if (solve == false)
+                {
+                    Toast.makeText(getApplicationContext(), "unsolvable", Toast.LENGTH_LONG).show();
+                }
+
+                else
+                {
+                    node given = new node(eight_puzzle);
+
+
+                    Z_pos(verPos,horPos,eight_puzzle);
+                    given.cur = mv_down(verPos, horPos, given.cur);
+                    Toast.makeText(getApplicationContext(), Integer.toString(eight_puzzle.get(1).get(1)), Toast.LENGTH_LONG).show();
+                    /*
+                    node init = new node();
+                    init.cur = eight_puzzle;
+
+                    node current = new node();
+                    current = init;
+
+                    ArrayList<ArrayList<ArrayList<Integer>>> traversed = new ArrayList<ArrayList<ArrayList<Integer>>>();
+                    traversed.add(current.cur);
+
+                    ArrayList<Queue<node>>a_misplaced = new ArrayList<Queue<node>>(31+(4*9));
+                    a_misplaced.get(misplaced(init.cur)).add(init);
+
+                    while(current.cur != goal)
+                    {
+                        for (int i = 0; i < 67; i++)
+                        {
+                            if (!a_misplaced.get(i).isEmpty())
+                            {
+                                current = a_misplaced.get(i).poll();
+                            }
+                        }
+                    }
+                    */
                 }
             }
         });
