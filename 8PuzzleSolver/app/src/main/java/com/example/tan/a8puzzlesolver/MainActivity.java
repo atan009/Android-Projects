@@ -7,6 +7,7 @@ package com.example.tan.a8puzzlesolver;
         import android.widget.EditText;
         import android.widget.Toast;
 
+        import java.lang.reflect.Array;
         import java.util.ArrayList;
         import java.util.Arrays;
 
@@ -81,6 +82,354 @@ public class MainActivity extends AppCompatActivity {
         return right;
     }
 
+
+    //counts misplaced tiles
+    int misplaced(ArrayList<ArrayList<Integer>> cur)
+    {
+        int misplaced = 0;
+        if (cur.get(0).get(0) != 1)
+        {
+            misplaced += 1;
+        }
+        if (cur.get(0).get(1) != 2)
+        {
+            misplaced += 1;
+        }
+        if (cur.get(0).get(2) != 3)
+        {
+            misplaced += 1;
+        }
+        if (cur.get(1).get(0) != 4)
+        {
+            misplaced += 1;
+        }
+        if (cur.get(1).get(1) != 5)
+        {
+            misplaced += 1;
+        }
+        if (cur.get(1).get(2) != 6)
+        {
+            misplaced += 1;
+        }
+        if (cur.get(2).get(0) != 7)
+        {
+            misplaced += 1;
+        }
+        if (cur.get(2).get(1) != 8)
+        {
+            misplaced += 1;
+        }
+        if (cur.get(2).get(2) != 0)
+        {
+            misplaced += 1;
+        }
+        return misplaced;
+    }
+
+
+
+    //counts Manhattan distance of all tiles
+    int Manhattan(ArrayList<ArrayList<Integer>> cur)
+    {
+        int Manhattan = 0;
+
+        if (cur.get(0).get(0) == 1)
+        {
+            Manhattan += 0;
+        }
+
+        else if (cur.get(0).get(0) == 2 || cur.get(0).get(0) == 4)
+        {
+            Manhattan += 1;
+        }
+
+        else if (cur.get(0).get(0) == 3 || cur.get(0).get(0) == 7 || cur.get(0).get(0) == 5)
+        {
+            Manhattan += 2;
+        }
+
+        else if (cur.get(0).get(0) == 6 || cur.get(0).get(0) == 8)
+        {
+            Manhattan += 3;
+        }
+
+        else if (cur.get(0).get(0) == 0)
+        {
+            Manhattan += 4;
+        }
+
+
+        if (cur.get(0).get(1) == 2)
+        {
+            Manhattan += 0;
+        }
+
+        else if (cur.get(0).get(1) == 1 || cur.get(0).get(1) == 3 || cur.get(0).get(1) == 5)
+        {
+            Manhattan += 1;
+        }
+
+        else if (cur.get(0).get(1) == 4 || cur.get(0).get(1) == 6 || cur.get(0).get(1) == 8)
+        {
+            Manhattan += 2;
+        }
+
+        else if (cur.get(0).get(1) == 7 || cur.get(0).get(1) == 0)
+        {
+            Manhattan += 3;
+        }
+
+
+        if (cur.get(0).get(2) == 3)
+        {
+            Manhattan += 0;
+        }
+
+        else if (cur.get(0).get(2) == 2 || cur.get(0).get(2) == 6)
+        {
+            Manhattan += 1;
+        }
+
+        else if (cur.get(0).get(2) == 1 || cur.get(0).get(2) == 5 || cur.get(0).get(2) == 0)
+        {
+            Manhattan += 2;
+        }
+
+        else if (cur.get(0).get(2) == 4 || cur.get(0).get(2) == 8)
+        {
+            Manhattan += 3;
+        }
+
+        else if (cur.get(0).get(2) == 7)
+        {
+            Manhattan += 4;
+        }
+
+
+        if (cur.get(1).get(0) == 4)
+        {
+            Manhattan += 0;
+        }
+
+        else if (cur.get(1).get(0) == 1 || cur.get(1).get(0) == 5 || cur.get(1).get(0) == 7)
+        {
+            Manhattan += 1;
+        }
+
+        else if (cur.get(1).get(0) == 2 || cur.get(1).get(0) == 6 || cur.get(1).get(0) == 8)
+        {
+            Manhattan += 2;
+        }
+
+        else if (cur.get(1).get(0) == 3 || cur.get(1).get(0) == 0)
+        {
+            Manhattan += 3;
+        }
+
+
+        if (cur.get(1).get(1) == 5)
+        {
+            Manhattan += 0;
+        }
+
+        else if (cur.get(1).get(1) == 2 || cur.get(1).get(1) == 4 || cur.get(1).get(1) == 6 || cur.get(1).get(1) == 8)
+        {
+            Manhattan += 1;
+        }
+
+        else if (cur.get(1).get(1) == 1 || cur.get(1).get(1) == 3 || cur.get(1).get(1) == 7 || cur.get(1).get(1) == 0)
+        {
+            Manhattan += 2;
+        }
+
+
+        if (cur.get(1).get(2) == 6)
+        {
+            Manhattan += 0;
+        }
+
+        else if (cur.get(1).get(2) == 5 || cur.get(1).get(2) == 3 || cur.get(1).get(2) == 0)
+        {
+            Manhattan += 1;
+        }
+
+        else if (cur.get(1).get(2) == 2 || cur.get(1).get(2) == 4 || cur.get(1).get(2) == 8)
+        {
+            Manhattan += 2;
+        }
+
+        else if (cur.get(1).get(2) == 1 || cur.get(1).get(2) == 7)
+        {
+            Manhattan += 3;
+        }
+
+
+        if (cur.get(2).get(0) == 7)
+        {
+            Manhattan += 0;
+        }
+
+        else if (cur.get(2).get(0) == 4 || cur.get(2).get(0) == 8)
+        {
+            Manhattan += 1;
+        }
+
+        else if (cur.get(2).get(0) == 1 || cur.get(2).get(0) == 5 || cur.get(2).get(0) == 0)
+        {
+            Manhattan += 2;
+        }
+
+        else if (cur.get(2).get(0) == 2 || cur.get(2).get(0) == 6)
+        {
+            Manhattan += 3;
+        }
+
+        else if (cur.get(2).get(0) == 3)
+        {
+            Manhattan += 4;
+        }
+
+
+        if (cur.get(2).get(1) == 8)
+        {
+            Manhattan += 0;
+        }
+
+        else if (cur.get(2).get(1) == 7 || cur.get(2).get(1) == 5 || cur.get(2).get(1) == 0)
+        {
+            Manhattan += 1;
+        }
+
+        else if (cur.get(2).get(1) == 2 || cur.get(2).get(1) == 4 || cur.get(2).get(1) == 6)
+        {
+            Manhattan += 2;
+        }
+
+        else if (cur.get(2).get(1) == 1 || cur.get(2).get(1) == 3)
+        {
+            Manhattan += 3;
+        }
+
+        if (cur.get(2).get(2) == 0)
+        {
+            Manhattan += 0;
+        }
+
+        else if (cur.get(2).get(2) == 8 || cur.get(2).get(2) == 6)
+        {
+            Manhattan += 1;
+        }
+
+        else if (cur.get(2).get(2) == 3 || cur.get(2).get(2) == 5 || cur.get(2).get(2) == 7)
+        {
+            Manhattan += 2;
+        }
+
+        else if (cur.get(2).get(2) == 2 || cur.get(2).get(2) == 4)
+        {
+            Manhattan += 3;
+        }
+
+        else if (cur.get(2).get(2) == 1)
+        {
+            Manhattan += 4;
+        }
+
+        return Manhattan;
+
+    }
+
+
+
+    boolean solvable(ArrayList<ArrayList<Integer>> cur)
+    {
+        ArrayList<Integer> linear = new ArrayList<Integer>();
+        int s = 0;
+        int zero = 0, one = 0, two = 0, three = 0, four = 0, five = 0, six = 0, seven = 0, eight = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int k = 0; k < 3; k++)
+            {
+                linear.add(cur.get(i).get(k));
+            }
+        }
+
+        for (int i = 0; i < 9; i++)
+        {
+            if (linear.get(i) == 0)
+            {
+                zero = 1;
+            }
+
+            else if (linear.get(i) == 1)
+            {
+                one = 1;
+            }
+
+            else if (linear.get(i) == 2)
+            {
+                two = 1;
+            }
+
+            else if (linear.get(i) == 3)
+            {
+                three = 1;
+            }
+
+            else if (linear.get(i) == 4)
+            {
+                four = 1;
+            }
+
+            else if (linear.get(i) == 5)
+            {
+                five = 1;
+            }
+
+            else if (linear.get(i) == 6)
+            {
+                six = 1;
+            }
+
+            else if (linear.get(i) == 7)
+            {
+                seven = 1;
+            }
+
+            else if (linear.get(i) == 8)
+            {
+                eight = 1;
+            }
+        }
+
+        for (int l = 0; l < 8; l++)
+        {
+            for (int m = l + 1; m < 9; m++)
+            {
+
+                if (linear.get(m) < linear.get(l) && linear.get(m) != 0)
+                {
+                    s += 1;
+                }
+            }
+
+        }
+
+
+
+        if (s % 2 == 0 && zero == 1 && one == 1 && two == 1 && three == 1 && four == 1 && five == 1 && six == 1 && seven == 1 && eight == 1)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -129,11 +478,16 @@ public class MainActivity extends AppCompatActivity {
                 eight_puzzle.add(row2);
                 eight_puzzle.add(row3);
 
-
+                /*
                 Z_pos(verPos, horPos, eight_puzzle);
                 eight_puzzle = mv_right(verPos,horPos,eight_puzzle);
                 Z_pos(verPos, horPos, eight_puzzle);
-                Toast.makeText(getApplicationContext(), Integer.toString(horPos.value), Toast.LENGTH_LONG).show();
+                int mDistance = Manhattan(eight_puzzle);
+                */
+                boolean solve = solvable(eight_puzzle);
+                if (solve == true) {
+                    Toast.makeText(getApplicationContext(), "solvable", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
