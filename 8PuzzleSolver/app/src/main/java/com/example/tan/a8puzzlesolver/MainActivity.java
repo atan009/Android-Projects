@@ -10,6 +10,7 @@ package com.example.tan.a8puzzlesolver;
         import java.lang.reflect.Array;
         import java.util.ArrayList;
         import java.util.Arrays;
+        import java.util.LinkedList;
         import java.util.Queue;
 
 
@@ -456,6 +457,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+    boolean equalGoal(ArrayList<ArrayList<Integer>>current)
+    {
+        if (current.get(0).get(0) == 1 && current.get(0).get(1) == 2 && current.get(0).get(2) == 3 && current.get(1).get(0) == 4 && current.get(1).get(1) == 5
+                && current.get(1).get(2) == 6 && current.get(2).get(0) == 7 && current.get(2).get(1) == 8 && current.get(2).get(2) == 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -515,8 +531,6 @@ public class MainActivity extends AppCompatActivity {
                 {
                     node given = new node(eight_puzzle);
 
-                    //Toast.makeText(getApplicationContext(), Integer.toString(given.g), Toast.LENGTH_LONG).show();
-
                     node init = new node(eight_puzzle);
 
                     node current = new node(eight_puzzle);
@@ -525,15 +539,21 @@ public class MainActivity extends AppCompatActivity {
                     traversed.add(current.cur);
 
                     ArrayList<Queue<node>>a_misplaced = new ArrayList<Queue<node>>(31+(4*9));
+                    for (int i = 0; i < (31+(4*9)); i++)
+                    {
+                        Queue<node> myNumbers = new LinkedList<node>();
+                        a_misplaced.add(myNumbers);
+                    }
                     a_misplaced.get(misplaced(init.cur)).add(init);
 
-                    while(current.cur != goal)
+                    while(!equalGoal(current.cur))
                     {
                         for (int i = 0; i < 67; i++)
                         {
-                            if (!a_misplaced.get(i).isEmpty())
+                            if (!a_misplaced.get(i).isEmpty() && a_misplaced.get(i) != null)
                             {
                                 current = a_misplaced.get(i).poll();
+                                //Toast.makeText(getApplicationContext(), Integer.toString(current.cur.get(1).get(1)), Toast.LENGTH_LONG).show();
                                 break;
                             }
                         }
@@ -575,6 +595,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             }
                         }
+
 
                         else if (verPos.value == 0 && horPos.value == 1)
                         {
@@ -883,7 +904,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                        else if (verPos.value == 2 && horPos.value == 1)
+                        if (verPos.value == 2 && horPos.value == 1)
                         {
                             node up_filler = new node(current);
                             node up = new node(current);
@@ -898,6 +919,7 @@ public class MainActivity extends AppCompatActivity {
                                     a_misplaced.get(up.g + up.h).add(up);
                                     traversed.add(up.cur);
                                 }
+                                //Toast.makeText(getApplicationContext(), Integer.toString(up.g + up.h), Toast.LENGTH_LONG).show();
                             }
 
 
@@ -915,6 +937,7 @@ public class MainActivity extends AppCompatActivity {
                                     a_misplaced.get(left.g + left.h).add(left);
                                     traversed.add(left.cur);
                                 }
+                                //Toast.makeText(getApplicationContext(), Integer.toString(left.g + left.h), Toast.LENGTH_LONG).show();
                             }
 
 
@@ -932,6 +955,7 @@ public class MainActivity extends AppCompatActivity {
                                     a_misplaced.get(right.g + right.h).add(right);
                                     traversed.add(right.cur);
                                 }
+                                //Toast.makeText(getApplicationContext(), Integer.toString(right.g + right.h), Toast.LENGTH_LONG).show();
                             }
                         }
 
@@ -974,6 +998,8 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 
+
+                    Toast.makeText(getApplicationContext(), Integer.toString(traversed.size()), Toast.LENGTH_LONG).show();
 
                     //Where the next code goes
                 }
