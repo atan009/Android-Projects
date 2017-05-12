@@ -4,153 +4,143 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tan.a8puzzlesolver.MainActivity">
+    tools:context="com.example.tan.a8puzzlesolver.solved_puzzle_movement">
 
-    <EditText
-        android:id="@+id/box1"
+    <TextView
+        android:id="@+id/spot1"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="370dp"
         android:layout_marginRight="0dp"
-        android:ems="10"
         android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
+        android:text="1"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/box2" />
+        app:layout_constraintRight_toLeftOf="@+id/spot2" />
 
-    <EditText
-        android:id="@+id/box2"
+    <TextView
+        android:id="@+id/spot2"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="370dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:ems="10"
         android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
+        android:text="2"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <EditText
-        android:id="@+id/box3"
+    <TextView
+        android:id="@+id/spot3"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="370dp"
-        android:layout_marginLeft="0dp"
-        android:ems="10"
+        android:layout_marginLeft="-10dp"
         android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
+        android:text="3"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/box2" />
+        app:layout_constraintLeft_toRightOf="@+id/spot2" />
 
-    <EditText
-        android:id="@+id/box4"
+    <TextView
+        android:id="@+id/spot4"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="310dp"
-        android:layout_marginRight="-5dp"
-        android:ems="10"
+        android:layout_marginRight="0dp"
         android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
+        android:text="4"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/box5" />
+        app:layout_constraintRight_toLeftOf="@+id/spot5" />
 
-    <EditText
-        android:id="@+id/box5"
+    <TextView
+        android:id="@+id/spot5"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="310dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:ems="10"
         android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
+        android:text="5"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <EditText
-        android:id="@+id/box6"
+    <TextView
+        android:id="@+id/spot6"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginBottom="310dp"
-        android:layout_marginLeft="0dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/box5" />
-
-    <EditText
-        android:id="@+id/box7"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="250dp"
-        android:layout_marginRight="-10dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/box8" />
-
-    <EditText
-        android:id="@+id/box8"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="122dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/solve_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <EditText
-        android:id="@+id/box9"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="250dp"
         android:layout_marginLeft="-9dp"
-        android:ems="10"
         android:gravity="center"
-        android:inputType="number"
-        android:maxLength="1"
+        android:text="6"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/box8" />
+        app:layout_constraintLeft_toRightOf="@+id/spot5" />
+
+    <TextView
+        android:id="@+id/spot7"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="250dp"
+        android:layout_marginRight="0dp"
+        android:gravity="center"
+        android:text="7"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/spot8" />
+
+    <TextView
+        android:id="@+id/spot8"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="250dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="8"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/spot9"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="250dp"
+        android:layout_marginLeft="0dp"
+        android:gravity="center"
+        android:text="9"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/spot8" />
+
+    <RadioButton
+        android:id="@+id/radioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:checked="true"
+        android:text="RadioButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/solve_button"
+        android:id="@+id/Play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:text="Solve"
+        android:text="Play Solution"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintRight_toRightOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

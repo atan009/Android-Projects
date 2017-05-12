@@ -1,10 +1,12 @@
 package com.example.tan.a8puzzlesolver;
 
+        import android.content.Intent;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.TextView;
         import android.widget.Toast;
 
         import java.lang.reflect.Array;
@@ -12,6 +14,7 @@ package com.example.tan.a8puzzlesolver;
         import java.util.Arrays;
         import java.util.LinkedList;
         import java.util.Queue;
+        import java.util.Stack;
 
 
 //Integer by reference
@@ -48,8 +51,10 @@ class node
         }
         g = copy.g;
         h = copy.h;
+        prev = copy.prev;
     }
 }
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -459,10 +464,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    boolean equalGoal(ArrayList<ArrayList<Integer>>current)
+    boolean equalStates(ArrayList<ArrayList<Integer>>current, ArrayList<ArrayList<Integer>>comp)
     {
-        if (current.get(0).get(0) == 1 && current.get(0).get(1) == 2 && current.get(0).get(2) == 3 && current.get(1).get(0) == 4 && current.get(1).get(1) == 5
-                && current.get(1).get(2) == 6 && current.get(2).get(0) == 7 && current.get(2).get(1) == 8 && current.get(2).get(2) == 0)
+        if (current.get(0).get(0) == comp.get(0).get(0) && current.get(0).get(1) == comp.get(0).get(1) && current.get(0).get(2) == comp.get(0).get(2)
+                && current.get(1).get(0) == comp.get(1).get(0) && current.get(1).get(1) == comp.get(1).get(1) && current.get(1).get(2) == comp.get(1).get(2)
+                && current.get(2).get(0) == comp.get(2).get(0) && current.get(2).get(1) == comp.get(2).get(1) && current.get(2).get(2) == comp.get(2).get(2))
         {
             return true;
         }
@@ -472,15 +478,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         final ArrayList<ArrayList<Integer>> goal = new ArrayList<ArrayList<Integer>>();
         goal.add(new ArrayList<Integer>(Arrays.asList(1,2,3)));
         goal.add(new ArrayList<Integer>(Arrays.asList(4,5,6)));
         goal.add(new ArrayList<Integer>(Arrays.asList(7,8,0)));
+
+        final Stack<node> solution = new Stack<node>();
 
         Button solve = (Button) findViewById(R.id.solve_button);
         solve.setOnClickListener(new View.OnClickListener() {
@@ -546,7 +558,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     a_misplaced.get(misplaced(init.cur)).add(init);
 
-                    while(!equalGoal(current.cur))
+                    while(!equalStates(current.cur, goal))
                     {
                         for (int i = 0; i < 67; i++)
                         {
@@ -999,9 +1011,43 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                    Toast.makeText(getApplicationContext(), Integer.toString(traversed.size()), Toast.LENGTH_LONG).show();
+                    //Stack<node> solution = new Stack<node>();
+                    ArrayList<Integer> solution = new ArrayList<Integer>();
+                    while (!equalStates(current.cur, given.cur))
+                    {
+                        solution.add(current.cur.get(0).get(0));
+                        solution.add(current.cur.get(0).get(1));
+                        solution.add(current.cur.get(0).get(2));
+                        solution.add(current.cur.get(1).get(0));
+                        solution.add(current.cur.get(1).get(1));
+                        solution.add(current.cur.get(1).get(2));
+                        solution.add(current.cur.get(2).get(0));
+                        solution.add(current.cur.get(2).get(1));
+                        solution.add(current.cur.get(2).get(2));
+                        current = current.prev;
+                    }
+                    //solution.add(given);
+                    solution.add(given.cur.get(0).get(0));
+                    solution.add(given.cur.get(0).get(1));
+                    solution.add(given.cur.get(0).get(2));
+                    solution.add(given.cur.get(1).get(0));
+                    solution.add(given.cur.get(1).get(1));
+                    solution.add(given.cur.get(1).get(2));
+                    solution.add(given.cur.get(2).get(0));
+                    solution.add(given.cur.get(2).get(1));
+                    solution.add(given.cur.get(2).get(2));
 
-                    //Where the next code goes
+                    //s1.setText("Your text");
+
+                    Intent Solve_puzzle = new Intent(MainActivity.this, solved_puzzle_movement.class);
+                    Bundle B = new Bundle();
+                    B.putIntegerArrayList("solution_stack", solution);
+                    Solve_puzzle.putExtras(B);
+                    startActivity(Solve_puzzle);
+                    //Toast.makeText(getApplicationContext(), Integer.toString(solution.size()), Toast.LENGTH_LONG).show();
+
+
+
                 }
             }
         });
