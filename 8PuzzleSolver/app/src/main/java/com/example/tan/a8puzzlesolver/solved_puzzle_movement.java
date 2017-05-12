@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,17 +46,33 @@ public class solved_puzzle_movement extends AppCompatActivity {
         s9 = (TextView) findViewById(R.id.spot9);
 
 
+
         Intent test = getIntent();
         Bundle bund = test.getExtras();
         final ArrayList<Integer> solution_array = bund.getIntegerArrayList("solution_stack");
         Collections.reverse(solution_array);
 
 
+        if (!solution_array.isEmpty())
+        {
+            s9.setText(Integer.toString(solution_array.remove(0)));
+            s8.setText(Integer.toString(solution_array.remove(0)));
+            s7.setText(Integer.toString(solution_array.remove(0)));
+            s6.setText(Integer.toString(solution_array.remove(0)));
+            s5.setText(Integer.toString(solution_array.remove(0)));
+            s4.setText(Integer.toString(solution_array.remove(0)));
+            s3.setText(Integer.toString(solution_array.remove(0)));
+            s2.setText(Integer.toString(solution_array.remove(0)));
+            s1.setText(Integer.toString(solution_array.remove(0)));
+        }
+
+
         Button show = (Button) findViewById(R.id.Play);
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+
+
 
                 Thread t = new Thread() {
 

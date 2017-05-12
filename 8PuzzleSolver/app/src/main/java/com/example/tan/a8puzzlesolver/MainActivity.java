@@ -6,6 +6,8 @@ package com.example.tan.a8puzzlesolver;
         import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
+        import android.widget.RadioButton;
+        import android.widget.Switch;
         import android.widget.TextView;
         import android.widget.Toast;
 
@@ -30,6 +32,7 @@ class MyInteger
 
 class node
 {
+    String direction = "";
     int g = 0;
     int h = 0;
     node prev = null;
@@ -52,6 +55,7 @@ class node
         g = copy.g;
         h = copy.h;
         prev = copy.prev;
+        direction = copy.direction;
     }
 }
 
@@ -494,6 +498,8 @@ public class MainActivity extends AppCompatActivity {
 
         final Stack<node> solution = new Stack<node>();
 
+        final Switch method = (Switch) findViewById(R.id.Solution_Switch);
+
         Button solve = (Button) findViewById(R.id.solve_button);
         solve.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -580,6 +586,7 @@ public class MainActivity extends AppCompatActivity {
                             node right = new node(current);
                             right.prev = right_filler;
                             right.cur = mv_right(verPos, horPos, right.cur);
+                            right.direction = "right";
                             if (!traversed.contains(right.cur))
                             {
                                 right.g = current.g + 1;
@@ -596,6 +603,7 @@ public class MainActivity extends AppCompatActivity {
                             node down = new node(current);
                             down.prev = down_filler;
                             down.cur = mv_down(verPos, horPos, down.cur);
+                            down.direction = "down";
                             if (!traversed.contains(down.cur))
                             {
                                 down.g = current.g + 1;
@@ -615,6 +623,7 @@ public class MainActivity extends AppCompatActivity {
                             node left = new node(current);
                             left.prev = left_filler;
                             left.cur = mv_left(verPos, horPos, left.cur);
+                            left.direction = "left";
                             if (!traversed.contains(left.cur))
                             {
                                 left.g = current.g + 1;
@@ -632,6 +641,7 @@ public class MainActivity extends AppCompatActivity {
                             node right = new node(current);
                             right.prev = right_filler;
                             right.cur = mv_right(verPos, horPos, right.cur);
+                            right.direction = "right";
                             if (!traversed.contains(right.cur))
                             {
                                 right.g = current.g + 1;
@@ -649,6 +659,7 @@ public class MainActivity extends AppCompatActivity {
                             node down = new node(current);
                             down.prev = down_filler;
                             down.cur = mv_right(verPos, horPos, down.cur);
+                            down.direction = "down";
                             if (!traversed.contains(down.cur))
                             {
                                 down.g = current.g + 1;
@@ -668,6 +679,7 @@ public class MainActivity extends AppCompatActivity {
                             node left = new node(current);
                             left.prev = left_filler;
                             left.cur = mv_left(verPos, horPos, left.cur);
+                            left.direction = "left";
                             if (!traversed.contains(left.cur))
                             {
                                 left.g = current.g + 1;
@@ -685,6 +697,7 @@ public class MainActivity extends AppCompatActivity {
                             node down = new node(current);
                             down.prev = down_filler;
                             down.cur = mv_down(verPos, horPos, down.cur);
+                            down.direction = "down";
                             if (!traversed.contains(down.cur))
                             {
                                 down.g = current.g + 1;
@@ -705,6 +718,7 @@ public class MainActivity extends AppCompatActivity {
                             node up = new node(current);
                             up.prev = up_filler;
                             up.cur = mv_up(verPos, horPos, up.cur);
+                            up.direction = "up";
                             if (!traversed.contains(up.cur))
                             {
                                 up.g = current.g + 1;
@@ -722,6 +736,7 @@ public class MainActivity extends AppCompatActivity {
                             node right = new node(current);
                             right.prev = right_filler;
                             right.cur = mv_right(verPos, horPos, right.cur);
+                            right.direction = "right";
                             if (!traversed.contains(right.cur))
                             {
                                 right.g = current.g + 1;
@@ -739,6 +754,7 @@ public class MainActivity extends AppCompatActivity {
                             node down = new node(current);
                             down.prev = down_filler;
                             down.cur = mv_down(verPos, horPos, down.cur);
+                            down.direction = "down";
                             if (!traversed.contains(down.cur))
                             {
                                 down.g = current.g + 1;
@@ -759,6 +775,7 @@ public class MainActivity extends AppCompatActivity {
                             node up = new node(current);
                             up.prev = up_filler;
                             up.cur = mv_up(verPos, horPos, up.cur);
+                            up.direction = "up";
                             if (!traversed.contains(up.cur))
                             {
                                 up.g = current.g + 1;
@@ -776,6 +793,7 @@ public class MainActivity extends AppCompatActivity {
                             node right = new node(current);
                             right.prev = right_filler;
                             right.cur = mv_right(verPos, horPos, right.cur);
+                            right.direction = "right";
                             if (!traversed.contains(right.cur))
                             {
                                 right.g = current.g + 1;
@@ -793,6 +811,7 @@ public class MainActivity extends AppCompatActivity {
                             node down = new node(current);
                             down.prev = down_filler;
                             down.cur = mv_down(verPos, horPos, down.cur);
+                            down.direction = "down";
                             if (!traversed.contains(down.cur))
                             {
                                 down.g = current.g + 1;
@@ -810,6 +829,7 @@ public class MainActivity extends AppCompatActivity {
                             node left = new node(current);
                             left.prev = left_filler;
                             left.cur = mv_left(verPos, horPos, left.cur);
+                            left.direction = "left";
                             if (!traversed.contains(left.cur))
                             {
                                 left.g = current.g + 1;
@@ -831,6 +851,7 @@ public class MainActivity extends AppCompatActivity {
                             node down = new node(current);
                             down.prev = down_filler;
                             down.cur = mv_down(verPos, horPos, down.cur);
+                            down.direction = "down";
                             if (!traversed.contains(down.cur))
                             {
                                 down.g = current.g + 1;
@@ -848,6 +869,7 @@ public class MainActivity extends AppCompatActivity {
                             node up = new node(current);
                             up.prev = up_filler;
                             up.cur = mv_up(verPos, horPos, up.cur);
+                            up.direction = "up";
                             if (!traversed.contains(up.cur))
                             {
                                 up.g = current.g + 1;
@@ -865,6 +887,7 @@ public class MainActivity extends AppCompatActivity {
                             node left = new node(current);
                             left.prev = left_filler;
                             left.cur = mv_left(verPos, horPos, left.cur);
+                            left.direction = "left";
                             if (!traversed.contains(left.cur))
                             {
                                 left.g = current.g + 1;
@@ -885,6 +908,7 @@ public class MainActivity extends AppCompatActivity {
                             node up = new node(current);
                             up.prev = up_filler;
                             up.cur = mv_up(verPos, horPos, up.cur);
+                            up.direction = "up";
                             if (!traversed.contains(up.cur))
                             {
                                 up.g = current.g + 1;
@@ -902,6 +926,7 @@ public class MainActivity extends AppCompatActivity {
                             node right = new node(current);
                             right.prev = right_filler;
                             right.cur = mv_right(verPos, horPos, right.cur);
+                            right.direction = "right";
                             if (!traversed.contains(right.cur))
                             {
                                 right.g = current.g + 1;
@@ -922,6 +947,7 @@ public class MainActivity extends AppCompatActivity {
                             node up = new node(current);
                             up.prev = up_filler;
                             up.cur = mv_up(verPos, horPos, up.cur);
+                            up.direction = "up";
                             if (!traversed.contains(up.cur))
                             {
                                 up.g = current.g + 1;
@@ -940,6 +966,7 @@ public class MainActivity extends AppCompatActivity {
                             node left = new node(current);
                             left.prev = left_filler;
                             left.cur = mv_left(verPos, horPos, left.cur);
+                            left.direction = "left";
                             if (!traversed.contains(left.cur))
                             {
                                 left.g = current.g + 1;
@@ -958,6 +985,7 @@ public class MainActivity extends AppCompatActivity {
                             node right = new node(current);
                             right.prev = right_filler;
                             right.cur = mv_right(verPos, horPos, right.cur);
+                            right.direction = "right";
                             if (!traversed.contains(right.cur))
                             {
                                 right.g = current.g + 1;
@@ -979,6 +1007,7 @@ public class MainActivity extends AppCompatActivity {
                             node left = new node(current);
                             left.prev = left_filler;
                             left.cur = mv_left(verPos, horPos, left.cur);
+                            left.direction = "left";
                             if (!traversed.contains(left.cur))
                             {
                                 left.g = current.g + 1;
@@ -996,6 +1025,7 @@ public class MainActivity extends AppCompatActivity {
                             node up = new node(current);
                             up.prev = up_filler;
                             up.cur = mv_up(verPos, horPos, up.cur);
+                            up.direction = "up";
                             if (!traversed.contains(up.cur))
                             {
                                 up.g = current.g + 1;
@@ -1010,43 +1040,70 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 
+                    if (!method.isChecked()) {
+                        //Stack<node> solution = new Stack<node>();
+                        ArrayList<Integer> solution = new ArrayList<Integer>();
+                        while (!equalStates(current.cur, given.cur)) {
+                            solution.add(current.cur.get(0).get(0));
+                            solution.add(current.cur.get(0).get(1));
+                            solution.add(current.cur.get(0).get(2));
+                            solution.add(current.cur.get(1).get(0));
+                            solution.add(current.cur.get(1).get(1));
+                            solution.add(current.cur.get(1).get(2));
+                            solution.add(current.cur.get(2).get(0));
+                            solution.add(current.cur.get(2).get(1));
+                            solution.add(current.cur.get(2).get(2));
+                            current = current.prev;
+                        }
+                        //solution.add(given);
+                        solution.add(given.cur.get(0).get(0));
+                        solution.add(given.cur.get(0).get(1));
+                        solution.add(given.cur.get(0).get(2));
+                        solution.add(given.cur.get(1).get(0));
+                        solution.add(given.cur.get(1).get(1));
+                        solution.add(given.cur.get(1).get(2));
+                        solution.add(given.cur.get(2).get(0));
+                        solution.add(given.cur.get(2).get(1));
+                        solution.add(given.cur.get(2).get(2));
 
-                    //Stack<node> solution = new Stack<node>();
-                    ArrayList<Integer> solution = new ArrayList<Integer>();
-                    while (!equalStates(current.cur, given.cur))
-                    {
-                        solution.add(current.cur.get(0).get(0));
-                        solution.add(current.cur.get(0).get(1));
-                        solution.add(current.cur.get(0).get(2));
-                        solution.add(current.cur.get(1).get(0));
-                        solution.add(current.cur.get(1).get(1));
-                        solution.add(current.cur.get(1).get(2));
-                        solution.add(current.cur.get(2).get(0));
-                        solution.add(current.cur.get(2).get(1));
-                        solution.add(current.cur.get(2).get(2));
-                        current = current.prev;
+                        //s1.setText("Your text");
+
+                        Intent Solve_puzzle = new Intent(MainActivity.this, solved_puzzle_movement.class);
+                        Bundle B = new Bundle();
+                        B.putIntegerArrayList("solution_stack", solution);
+                        Solve_puzzle.putExtras(B);
+                        startActivity(Solve_puzzle);
+                        //Toast.makeText(getApplicationContext(), Integer.toString(solution.size()), Toast.LENGTH_LONG).show();
                     }
-                    //solution.add(given);
-                    solution.add(given.cur.get(0).get(0));
-                    solution.add(given.cur.get(0).get(1));
-                    solution.add(given.cur.get(0).get(2));
-                    solution.add(given.cur.get(1).get(0));
-                    solution.add(given.cur.get(1).get(1));
-                    solution.add(given.cur.get(1).get(2));
-                    solution.add(given.cur.get(2).get(0));
-                    solution.add(given.cur.get(2).get(1));
-                    solution.add(given.cur.get(2).get(2));
 
-                    //s1.setText("Your text");
+                    else if (method.isChecked())
+                    {
+                        ArrayList<String> solution = new ArrayList<String>();
+                        ArrayList<String> reverse = new ArrayList<String>();
+                        int num_steps = 0;
+                        while (!equalStates(current.cur, given.cur))
+                        {
+                            num_steps += 1;
+                            solution.add(current.direction);
+                            current = current.prev;
+                        }
 
-                    Intent Solve_puzzle = new Intent(MainActivity.this, solved_puzzle_movement.class);
-                    Bundle B = new Bundle();
-                    B.putIntegerArrayList("solution_stack", solution);
-                    Solve_puzzle.putExtras(B);
-                    startActivity(Solve_puzzle);
-                    //Toast.makeText(getApplicationContext(), Integer.toString(solution.size()), Toast.LENGTH_LONG).show();
+                        while (!solution.isEmpty())
+                        {
+                            reverse.add("" + num_steps + " " + solution.remove(0));
+                            num_steps -= 1;
+                        }
+
+                        //Toast.makeText(getApplicationContext(), solution.get(0), Toast.LENGTH_LONG).show();
+
+                        Intent Solve_puzzle = new Intent(MainActivity.this, solved_puzzle_steps.class);
+                        Bundle B = new Bundle();
+                        B.putStringArrayList("solution_stack", reverse);
+                        Solve_puzzle.putExtras(B);
+                        startActivity(Solve_puzzle);
 
 
+                    }
 
                 }
             }

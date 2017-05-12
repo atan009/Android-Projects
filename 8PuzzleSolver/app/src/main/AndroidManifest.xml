@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".solved_puzzle_movement"></activity>
+        <activity android:name=".solved_puzzle_movement" />
+        <activity android:name=".solved_puzzle_steps"></activity>
     </application>
 
 </manifest>
