@@ -519,6 +519,18 @@ public class MainActivity extends AppCompatActivity {
                 EditText box8 = (EditText) findViewById(R.id.box8);
                 EditText box9 = (EditText) findViewById(R.id.box9);
 
+
+
+                if (box1.getText().toString().isEmpty() || box2.getText().toString().isEmpty() || box3.getText().toString().isEmpty() ||
+                        box4.getText().toString().isEmpty() || box5.getText().toString().isEmpty() || box6.getText().toString().isEmpty() ||
+                        box7.getText().toString().isEmpty() || box8.getText().toString().isEmpty() || box9.getText().toString().isEmpty())
+                {
+                    Toast.makeText(getApplicationContext(), "Not all boxes are filled", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+
+
                 ArrayList<Integer> row1 = new ArrayList<Integer>();
                 row1.add(Integer.parseInt(box1.getText().toString()));
                 row1.add(Integer.parseInt(box2.getText().toString()));
