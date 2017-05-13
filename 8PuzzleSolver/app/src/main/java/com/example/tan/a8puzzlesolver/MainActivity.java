@@ -7,16 +7,13 @@ package com.example.tan.a8puzzlesolver;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.RadioButton;
-        import android.widget.Switch;
-        import android.widget.TextView;
         import android.widget.Toast;
-
-        import java.lang.reflect.Array;
         import java.util.ArrayList;
         import java.util.Arrays;
         import java.util.LinkedList;
         import java.util.Queue;
         import java.util.Stack;
+
 
 
 //Integer by reference
@@ -498,7 +495,25 @@ public class MainActivity extends AppCompatActivity {
 
         final Stack<node> solution = new Stack<node>();
 
-        final Switch method = (Switch) findViewById(R.id.Solution_Switch);
+        final RadioButton method1 = (RadioButton) findViewById(R.id.Box_Movement);
+        final RadioButton method2 = (RadioButton) findViewById(R.id.sbs);
+
+        method1.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 method2.setChecked(false);
+                 method1.setChecked(true);
+             }
+         });
+
+
+        method2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                method1.setChecked(false);
+                method2.setChecked(true);
+            }
+        });
 
         Button solve = (Button) findViewById(R.id.solve_button);
         solve.setOnClickListener(new View.OnClickListener() {
@@ -551,6 +566,7 @@ public class MainActivity extends AppCompatActivity {
                 eight_puzzle.add(row3);
 
 
+
                 boolean solve = solvable(eight_puzzle);
                 if (solve == false)
                 {
@@ -576,6 +592,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                     a_misplaced.get(misplaced(init.cur)).add(init);
 
+
+
+
                     while(!equalStates(current.cur, goal))
                     {
                         for (int i = 0; i < 67; i++)
@@ -583,7 +602,6 @@ public class MainActivity extends AppCompatActivity {
                             if (!a_misplaced.get(i).isEmpty() && a_misplaced.get(i) != null)
                             {
                                 current = a_misplaced.get(i).poll();
-                                //Toast.makeText(getApplicationContext(), Integer.toString(current.cur.get(1).get(1)), Toast.LENGTH_LONG).show();
                                 break;
                             }
                         }
@@ -969,7 +987,6 @@ public class MainActivity extends AppCompatActivity {
                                     a_misplaced.get(up.g + up.h).add(up);
                                     traversed.add(up.cur);
                                 }
-                                //Toast.makeText(getApplicationContext(), Integer.toString(up.g + up.h), Toast.LENGTH_LONG).show();
                             }
 
 
@@ -988,7 +1005,6 @@ public class MainActivity extends AppCompatActivity {
                                     a_misplaced.get(left.g + left.h).add(left);
                                     traversed.add(left.cur);
                                 }
-                                //Toast.makeText(getApplicationContext(), Integer.toString(left.g + left.h), Toast.LENGTH_LONG).show();
                             }
 
 
@@ -1007,7 +1023,6 @@ public class MainActivity extends AppCompatActivity {
                                     a_misplaced.get(right.g + right.h).add(right);
                                     traversed.add(right.cur);
                                 }
-                                //Toast.makeText(getApplicationContext(), Integer.toString(right.g + right.h), Toast.LENGTH_LONG).show();
                             }
                         }
 
@@ -1052,10 +1067,10 @@ public class MainActivity extends AppCompatActivity {
                     }
 
 
-                    if (!method.isChecked()) {
-                        //Stack<node> solution = new Stack<node>();
+                    if (method1.isChecked()) {
                         ArrayList<Integer> solution = new ArrayList<Integer>();
-                        while (!equalStates(current.cur, given.cur)) {
+                        while (!equalStates(current.cur, given.cur))
+                        {
                             solution.add(current.cur.get(0).get(0));
                             solution.add(current.cur.get(0).get(1));
                             solution.add(current.cur.get(0).get(2));
@@ -1067,6 +1082,7 @@ public class MainActivity extends AppCompatActivity {
                             solution.add(current.cur.get(2).get(2));
                             current = current.prev;
                         }
+
                         //solution.add(given);
                         solution.add(given.cur.get(0).get(0));
                         solution.add(given.cur.get(0).get(1));
@@ -1078,17 +1094,16 @@ public class MainActivity extends AppCompatActivity {
                         solution.add(given.cur.get(2).get(1));
                         solution.add(given.cur.get(2).get(2));
 
-                        //s1.setText("Your text");
+
 
                         Intent Solve_puzzle = new Intent(MainActivity.this, solved_puzzle_movement.class);
                         Bundle B = new Bundle();
                         B.putIntegerArrayList("solution_stack", solution);
                         Solve_puzzle.putExtras(B);
                         startActivity(Solve_puzzle);
-                        //Toast.makeText(getApplicationContext(), Integer.toString(solution.size()), Toast.LENGTH_LONG).show();
                     }
 
-                    else if (method.isChecked())
+                    else if (method2.isChecked())
                     {
                         ArrayList<String> solution = new ArrayList<String>();
                         ArrayList<String> reverse = new ArrayList<String>();
@@ -1106,15 +1121,13 @@ public class MainActivity extends AppCompatActivity {
                             num_steps -= 1;
                         }
 
-                        //Toast.makeText(getApplicationContext(), solution.get(0), Toast.LENGTH_LONG).show();
+
 
                         Intent Solve_puzzle = new Intent(MainActivity.this, solved_puzzle_steps.class);
                         Bundle B = new Bundle();
                         B.putStringArrayList("solution_stack", reverse);
                         Solve_puzzle.putExtras(B);
                         startActivity(Solve_puzzle);
-
-
                     }
 
                 }

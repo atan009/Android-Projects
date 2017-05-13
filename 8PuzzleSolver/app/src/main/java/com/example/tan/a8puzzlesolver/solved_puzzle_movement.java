@@ -1,26 +1,15 @@
 package com.example.tan.a8puzzlesolver;
 
-import android.content.Context;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Stack;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+
 
 
 
@@ -109,7 +98,7 @@ public class solved_puzzle_movement extends AppCompatActivity {
                 {
                     t.start();
                 }
-                //Toast.makeText(getApplicationContext(), Integer.toString(solution_array.size()), Toast.LENGTH_LONG).show();
+
             }
         });
     }

@@ -26,9 +26,6 @@ public class solved_puzzle_steps extends AppCompatActivity {
         Collections.reverse(solution_array);
 
 
-
-        //Toast.makeText(getApplicationContext(), solution_array.size(), Toast.LENGTH_LONG).show();
-
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, solution_array);
 
         ListView steps = (ListView) findViewById(R.id.sbs);
